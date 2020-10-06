@@ -1,5 +1,5 @@
 // Styling
-// 💯 Create a custom component
+// 💯 Create a custom component (final)
 // http://localhost:3000/isolated/final/05.extra-1.js
 
 import React from 'react'

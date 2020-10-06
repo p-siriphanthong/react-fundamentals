@@ -1,5 +1,5 @@
 // Styling
-// 💯 accept a size prop to encapsulate styling
+// 💯 accept a size prop to encapsulate styling (final)
 // http://localhost:3000/isolated/final/05.extra-2.js
 
 import React from 'react'

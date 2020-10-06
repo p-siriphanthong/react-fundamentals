@@ -1,5 +1,5 @@
 // Basic Forms
-// 💯 using refs
+// 💯 using refs (final)
 // http://localhost:3000/isolated/final/06.extra-1.js
 
 import React from 'react'
