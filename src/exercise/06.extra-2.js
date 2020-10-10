@@ -33,6 +33,7 @@ function UsernameForm({onSubmitUsername}) {
           {error}
         </div>
       </div>
+      {/* 💬 using Boolean(error) */}
       <button type="submit" disabled={!!error}>
         Submit
       </button>

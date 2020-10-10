@@ -8,6 +8,7 @@
   <script type="module">
     const rootElement = document.getElementById('root')
 
+    // 💬 This exercise no need to create own `React` and `ReactDOM`
     const React = {
       createElement(type, {children, ...props} = {}) {
         const element = document.createElement(type)
@@ -25,9 +26,11 @@
 
     const elementProps = {
       className: 'container',
+      // 💬 In the real `React`, we can specific children by array of elements
       children: '<span>Hello</span> <span>World</span>',
     }
     const elementType = 'div'
+    // 💬 In the real `React`, parameter number 3, 4, ... are children (`React` will convert to array automaticly)
     const reactElement = React.createElement(elementType, elementProps)
     ReactDOM.render(reactElement, rootElement)
   </script>

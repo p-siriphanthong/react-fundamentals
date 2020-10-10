@@ -16,6 +16,7 @@
         </div>
       )
     }
+    // 💬 should create PropTypes object, then create `string` function and call it by `PropTypes.string` (see more in final version)
     Message.propTypes = {
       message(props, propName, componentName) {
         if (typeof props.greeting !== 'string' || !props.greeting) {

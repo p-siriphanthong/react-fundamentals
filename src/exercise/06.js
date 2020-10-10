@@ -21,6 +21,7 @@ function UsernameForm({onSubmitUsername}) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    // 💬 can use `event.target.elements.username.value` if the input has attribuite name="username"
     // onSubmitUsername(event.target.elements[0].value)
     onSubmitUsername(event.target.elements.usernameInput.value)
   }
@@ -28,6 +29,7 @@ function UsernameForm({onSubmitUsername}) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
+        {/* 💬 htmlFor: If click on label, the input will focus automaticly */}
         <label htmlFor="usernameInput">Username:</label>
         <input id="usernameInput" type="text" />
       </div>

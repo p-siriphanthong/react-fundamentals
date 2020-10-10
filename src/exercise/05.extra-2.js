@@ -5,6 +5,7 @@
 import React from 'react'
 import '../box-styles.css'
 
+// 💬 should set default className to ''
 function Box({size, className, style, ...props} = {}) {
   return (
     <div

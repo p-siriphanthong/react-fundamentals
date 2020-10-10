@@ -18,6 +18,7 @@ function App() {
     setItems(items.map(item => (item.id === id ? {id, value} : item)))
   }
 
+  // 💬 should declare this function outside the App component
   function shuffleItems() {
     const newItems = [...items]
     for (let i = newItems.length - 1; i > 0; i--) {
@@ -28,6 +29,7 @@ function App() {
   }
 
   React.useEffect(() => {
+    // 💬 `setState` can be a function (oldValue) => newValue
     const id = setInterval(() => setItems(shuffleItems()), 1000)
     return () => clearInterval(id)
   }, [])
