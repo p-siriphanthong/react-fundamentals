@@ -14,37 +14,55 @@ const allItems = [
 function App() {
   const [items, setItems] = React.useState(allItems)
 
-  function addItem() {
-    setItems([...items, allItems.find(i => !items.includes(i))])
+  function updateItem(id, value) {
+    setItems(items.map(item => (item.id === id ? {id, value} : item)))
   }
 
-  function removeItem(item) {
-    setItems(items.filter(i => i !== item))
+  function shuffleItems() {
+    const newItems = [...items]
+    for (let i = newItems.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[newItems[i], newItems[j]] = [newItems[j], newItems[i]]
+    }
+    return newItems
   }
+
+  React.useEffect(() => {
+    const id = setInterval(() => setItems(shuffleItems()), 1000)
+    return () => clearInterval(id)
+  }, [])
 
   return (
-    <div
-      style={{
-        height: 200,
-        width: 400,
-        backgroundColor: '#eee',
-        borderRadius: 4,
-        padding: 20,
-      }}
-    >
-      <button disabled={items.length >= allItems.length} onClick={addItem}>
-        add item
-      </button>
-      <ul style={{listStyle: 'none', paddingLeft: 0}}>
+    <div>
+      <div>
+        <h1>Without a key</h1>
         {items.map(item => (
-          // 🐨 add a key prop to the <li> below. Set it to item.id
-          <li>
-            <button onClick={() => removeItem(item)}>remove</button>{' '}
-            <label htmlFor={`${item.value}-input`}>{item.value}</label>{' '}
-            <input id={`${item.value}-input`} defaultValue={item.value} />
-          </li>
+          <input
+            value={item.value}
+            onChange={e => updateItem(item.id, e.target.value)}
+          />
         ))}
-      </ul>
+      </div>
+      <div>
+        <h1>With array index as key</h1>
+        {items.map((item, index) => (
+          <input
+            key={index}
+            value={item.value}
+            onChange={e => updateItem(item.id, e.target.value)}
+          />
+        ))}
+      </div>
+      <div>
+        <h1>With a Proper Key</h1>
+        {items.map(item => (
+          <input
+            key={item.id}
+            value={item.value}
+            onChange={e => updateItem(item.id, e.target.value)}
+          />
+        ))}
+      </div>
     </div>
   )
 }
